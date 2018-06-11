@@ -24,3 +24,16 @@ before_script:
 
 script:
   - julia build_tarballs.jl
+
+deploy:
+    provider: releases
+    api_key:
+        # Note; this api_key is only valid for JuliaMath/GMPBuilder; you need
+        # to make your own: https://docs.travis-ci.com/user/deployment/releases/
+        secure: VWtV0qBZE5nFesyVwmFFhq+tPUODPewZxA7rJzKGP2jgHc5cEcSs3JGME7vMOMuGWppkJAV5tyTTj4I8q9mOmdMxWgsE06MDRVPCmFBDRIEL6fiY5pcY5zvwP1UoYVzA9uy4ck/V6rH+vIA72tCBT7Y0+u66+zbnpmq+8l0SjdYnuJCfXLuxU2u/9rhrR7YqVthB1e0N7+clE+BMq/X+4/D3MKysboZZlbehaCLkvWfqNj7ORWpL9k4SxTKXfpDr96qWORtF/KJtCAxlslX+K2UgweIUpGwQOJiP4gjAow98F31uzDsqWXmVBklN5RynMecbh9q0npfsu8tXuiSzP8/SlhqiX3QrFHEqZNqcvT9jDIuOGuhryLQGTUVzLR7JTXb6bMSYcZYqkVkto6oH/JkOL5REzJwAaHA71dsvHY3z0Azl9g4V/gDkUgUUutxdCEIT2MJlXSQfPpjeuItezNkr5bFKkdW0ayj8CEP+iggGFy6X0PdHioxP5TLYNMCgkMo/njfLSktuqW6oE1hDnZUX3k0sOlzGnN6HsYRAdj3lb/gfsuI9iUeyWdtxIOnCWJ95+HRLnqX6aDQoYCzQJVk4VVushOzwGgTaxDwT8BsQYFVU22lwxFjIvi40BN6EEVF+Tu1wqBS1AaMBe0hUBdJOWs2ImeM4BSmb4E0KBA0=
+    file_glob: true
+    file: products/*
+    skip_cleanup: true
+    on:
+        repo: JuliaMath/GMPBuilder
+        tags: true
