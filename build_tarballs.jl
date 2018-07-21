@@ -3,6 +3,8 @@
 using BinaryBuilder
 
 # Collection of sources required to build GMPBuilder
+name = "GMP"
+version = v"6.1.2"
 sources = [
     "https://gmplib.org/download/gmp/gmp-6.1.2.tar.bz2" =>
     "5275bb04f4863a13516b2f39392ac5e272f5e1bb8057b18aec1c9b79d73d8fb2",
@@ -39,4 +41,4 @@ dependencies = [
 ]
 
 # Build the tarballs, and possibly a `build.jl` as well.
-build_tarballs(ARGS, "GMPBuilder", sources, script, platforms, products, dependencies)
+build_tarballs(ARGS, name, version, sources, script, platforms, products, dependencies)
