@@ -12,7 +12,12 @@ sources = [
 # Bash recipe for building across all platforms
 script = raw"""
 cd gmp-6.1.2
-./configure --prefix=$prefix --host=$target --enable-shared --disable-static
+flags="--enable-cxx"
+# On x86_64 architectures, build fat binary
+if [[ ${proc_family} == intel ]]; then
+    flags="${flags} --enable-fat"
+fi
+./configure --prefix=$prefix --host=$target --enable-shared --disable-static ${flags}
 make -j
 make install
 
