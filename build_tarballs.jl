@@ -26,15 +26,7 @@ make install
 
 # These are the platforms we will build for by default, unless further
 # platforms are passed in on the command line
-platforms = [
-    BinaryProvider.Linux(:aarch64, :glibc, :blank_abi),
-    BinaryProvider.Windows(:i686, :blank_libc, :blank_abi),
-    BinaryProvider.Linux(:armv7l, :glibc, :eabihf),
-    BinaryProvider.Windows(:x86_64, :blank_libc, :blank_abi),
-    BinaryProvider.Linux(:x86_64, :glibc, :blank_abi),
-    BinaryProvider.MacOS(:x86_64, :blank_libc, :blank_abi),
-    BinaryProvider.Linux(:i686, :glibc, :blank_abi)
-]
+platforms = supported_platforms()
 
 # The products that we will ensure are always built
 products(prefix) = [
