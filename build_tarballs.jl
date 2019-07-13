@@ -19,11 +19,11 @@ flags="--enable-cxx"
 if [[ ${proc_family} == intel ]]; then
     flags="${flags} --enable-fat"
 fi
+export CC="${CC} ${LDFLAGS}"
+export CXX="${CXX} ${LDFLAGS}"
 ./configure --prefix=$prefix --host=$target --enable-shared --disable-static ${flags}
 make -j
 make install
-
-
 """
 
 # These are the platforms we will build for by default, unless further
